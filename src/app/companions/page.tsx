@@ -1,9 +1,29 @@
-const CompagnionsLibrary = () => {
+import CompanionCard from "@/components/CompanionCard";
+import SearchInput from "@/components/SearchInput";
+import SubjectFilter from "@/components/SubjectFilter";
+import { getAllCompanions } from "@/lib/actions/companion.actions"
+import { getSubjectColor } from "@/lib/utils";
+
+const CompanionsLibrary = async ({searchParams}: SearchParams) => {
+  const { subject, topic } = await searchParams;
+  const companions = await getAllCompanions({ subject, topic });
+
   return (
-    <div>
-      <h1>Compagnions Library</h1>
+   <main>
+    <section className="flex justify-between gap-4 max-sm:flex-col">
+    <h1>Companions Library</h1>
+    <div className="flex gap-4">
+      <SearchInput />
+      <SubjectFilter />
     </div>
+    </section>
+    <section className="companion-grid">
+      {companions.map((companion) => (
+        <CompanionCard key={companion.id} {...companion} color={getSubjectColor(companion.subject)} />
+      ))}
+    </section>
+   </main>
   )
 }
 
-export default CompagnionsLibrary
+export default CompanionsLibrary
