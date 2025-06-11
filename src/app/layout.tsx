@@ -1,4 +1,7 @@
 import type { Metadata } from "next";
+import {
+  ClerkProvider,
+} from '@clerk/nextjs'
 import { Bricolage_Grotesque } from "next/font/google";
 import "./globals.css";
 import NavBar from "@/components/ui/layouts/NavBar";
@@ -20,6 +23,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
+    <ClerkProvider>
     <html lang="en">
       <body
         className={`${bricolage.variable} antialiased`}
@@ -28,5 +32,7 @@ export default function RootLayout({
         {children}
       </body>
     </html>
+    
+    </ClerkProvider>
   );
 }
