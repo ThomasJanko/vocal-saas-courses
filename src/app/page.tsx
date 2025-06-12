@@ -13,7 +13,12 @@ export default async function Home() {
       <h1 className="text-2xl underline">Welcome to my SaaS App</h1>
       <section className="home-section">
         {companions.map((companion) => (
-          <CompanionCard key={companion.id} id={companion.id} name={companion.name} topic={companion.topic} subject={companion.subject} duration={companion.duration} color={getSubjectColor(companion.subject)} />
+          <CompanionCard
+          key={companion.id}
+          {...companion}
+          color={getSubjectColor(companion.subject)}
+          bookmarked={companion.bookmarked}
+      />
         ))}
       </section>
       <section className="home-section">
