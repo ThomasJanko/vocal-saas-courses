@@ -15,7 +15,7 @@ enum CallStatus {
     FINISHED = 'FINISHED',
 }
 
-const CompanionComponent = ({ companionId, subject, topic, name, userName, userImage, style, voice }: CompanionComponentProps) => {
+const CompanionComponent = ({ companionId, subject, topic, name, userName, userImage, style, voice, language }: CompanionComponentProps) => {
     const [callStatus, setCallStatus] = useState<CallStatus>(CallStatus.INACTIVE);
     const [isSpeaking, setIsSpeaking] = useState(false);
     const [isMuted, setIsMuted] = useState(false);
@@ -81,13 +81,13 @@ const CompanionComponent = ({ companionId, subject, topic, name, userName, userI
         setCallStatus(CallStatus.CONNECTING)
 
         const assistantOverrides = {
-            variableValues: { subject, topic, style },
+            variableValues: { subject, topic, style, language },
             clientMessages: ["transcript"],
             serverMessages: [],
         }
 
         // @ts-expect-error - VAPI SDK types are not fully compatible with TypeScript
-        vapi.start(configureAssistant(voice, style), assistantOverrides)
+        vapi.start(configureAssistant(voice, style, language), assistantOverrides)
     }
 
     const handleDisconnect = () => {

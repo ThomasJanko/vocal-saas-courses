@@ -16,11 +16,19 @@ export const subjectsColors = {
   economics: "#C8FFDF",
 };
 
-export const voices = {
-  male: { casual: "2BJW5coyhAzSr8STdHbE", formal: "c6SfcYrb2t09NHXiT80T" },
-  female: { casual: "ZIlrSGI4jZqobxRKprJz", formal: "sarah" },
+export const languagesColors = {
+  en: "linear-gradient(135deg, #FFFFFF 33%, #CE1124 33%, #CE1124 66%, #FFFFFF 66%)",
+  fr: "linear-gradient(135deg, #0055A4 33%, #FFFFFF 33%, #FFFFFF 66%, #EF4135 66%)",
+  es: "linear-gradient(135deg, #AA151B 33%, #F1BF00 33%, #F1BF00 66%, #AA151B 66%)", 
+  de: "linear-gradient(135deg, #000000 33%, #DD0000 33%, #DD0000 66%, #FFCC00 66%)",
 };
 
+export const voices = {
+  male: { casual: "2BJW5coyhAzSr8STdHbE", formal: "c6SfcYrb2t09NHXiT80T" },
+  female: { casual: "x10MLxaAmShMYt7vs7pl", formal: "sarah" },
+};
+//FR
+// x10MLxaAmShMYt7vs7pl
 export const recentSessions = [
   {
     id: "1",

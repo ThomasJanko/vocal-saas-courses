@@ -1,6 +1,6 @@
 import CompanionComponent from "@/components/CompanionComponent";
 import { getCompanion } from "@/lib/actions/companion.actions";
-import { getSubjectColor } from "@/lib/utils";
+import { getLanguageColor, getSubjectColor } from "@/lib/utils";
 import { currentUser } from "@clerk/nextjs/server";
 import Image from "next/image";
 import { redirect } from "next/navigation";
@@ -14,7 +14,7 @@ const CompanionSession = async ({ params }: CompanionSessionPageProps) => {
   const companion = await getCompanion(id);
   const user = await currentUser();
 
-  const { name, subject, topic, duration } = companion;
+  const { name, subject, topic, duration, language } = companion;
 
   if(!user) redirect('/sign-in');
   if(!name) redirect('/companions')
@@ -35,6 +35,8 @@ const CompanionSession = async ({ params }: CompanionSessionPageProps) => {
                       <div className="subject-badge max-sm:hidden">
                           {subject}
                       </div>
+                      <div className="language-badge" style={{ background: getLanguageColor(language) }}/>
+
                   </div>
                   <p className="text-lg">{topic}</p>
               </div>

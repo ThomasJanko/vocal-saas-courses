@@ -1,4 +1,4 @@
-import { subjectsColors, voices } from "@/constants";
+import { languagesColors, subjectsColors, voices } from "@/constants";
 import { CreateAssistantDTO } from "@vapi-ai/web/dist/api";
 import { clsx, type ClassValue } from "clsx"
 import { twMerge } from "tailwind-merge"
@@ -12,19 +12,38 @@ export const getSubjectColor = (subject: string) => {
   return subjectsColors[subject as keyof typeof subjectsColors];
 };
 
-export const configureAssistant = (voice: string, style: string) => {
+export const getLanguageColor = (language: string) => {
+  return languagesColors[language as keyof typeof languagesColors];
+};
+
+export const configureAssistant = (voice: string, style: string, language: string) => {
   const voiceId = voices[voice as keyof typeof voices][
           style as keyof (typeof voices)[keyof typeof voices]
           ] || "sarah";
 
+  let firstMessage = "";
+  switch (language) {
+    case "fr":
+      firstMessage = "Bonjour, commençons la session. Aujourd'hui, nous allons parler de '{{topic}}'.";
+      break;
+    case "es":
+      firstMessage = "Hola, comencemos la sesión. Hoy hablaremos de '{{topic}}'.";
+      break;
+    case "de":
+      firstMessage = "Hallo, lassen Sie uns beginnen. Heute werden wir über '{{topic}}' sprechen.";
+      break;
+    default:
+      firstMessage = "Hello, let's start the session. Today we'll be talking about '{{topic}}'.";
+  }
+
   const vapiAssistant: CreateAssistantDTO = {
     name: "Companion",
     firstMessage:
-        "Hello, let's start the session. Today we'll be talking about {{topic}}.",
+        firstMessage,
     transcriber: {
       provider: "deepgram",
       model: "nova-3",
-      language: "en",
+      language: "multi",
     },
     voice: {
       provider: "11labs",

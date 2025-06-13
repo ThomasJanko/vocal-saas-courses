@@ -89,7 +89,15 @@ export const getRecentSessions = async (limit = 10) => {
 
     if(error) throw new Error(error.message);
 
-    return data.map(({ companions }) => companions);
+    // Remove duplicates by using a Map with companion_id as key
+    const uniqueCompanions = new Map();
+    data.forEach(({ companions }: { companions: Companion }) => {
+        if (companions && !uniqueCompanions.has(companions.id)) {
+            uniqueCompanions.set(companions.id, companions);
+        }
+    });
+
+    return Array.from(uniqueCompanions.values());
 }
 
 export const getUserSessions = async (userId: string, limit = 10) => {

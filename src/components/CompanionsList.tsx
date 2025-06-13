@@ -6,7 +6,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table"
-import {cn, getSubjectColor} from "@/lib/utils";
+import {cn, getLanguageColor, getSubjectColor} from "@/lib/utils";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -30,7 +30,7 @@ const CompanionsList = ({ title, companions, classNames }: CompanionsListProps) 
                   </TableRow>
               </TableHeader>
               <TableBody>
-                  {companions?.map(({id, subject, name, topic, duration}) => (
+                  {companions?.map(({id, subject, name, topic, duration, language}) => (
                       <TableRow key={id}>
                           <TableCell>
                               <Link href={`/companions/${id}`}>
@@ -43,9 +43,12 @@ const CompanionsList = ({ title, companions, classNames }: CompanionsListProps) 
                                               height={35} />
                                       </div>
                                       <div className="flex flex-col gap-2">
+                                        <div className="flex items-center gap-2">
                                           <p className="font-bold text-2xl">
-                                              {name}
+                                            {name}
                                           </p>
+                                          <div className="language-badge" style={{ background: getLanguageColor(language) }}/>
+                                        </div>
                                           <p className="text-lg">
                                               {topic}
                                           </p>

@@ -151,6 +151,10 @@ body {
   .subject-badge {
     @apply bg-black text-white rounded-4xl text-sm px-2 py-1 capitalize;
   }
+  .language-badge {
+    @apply  text-white rounded-4xl text-sm px-2 py-1 capitalize w-6 h-6;
+  }
+  
   .companion-bookmark {
     @apply px-2 bg-black rounded-4xl flex items-center h-full aspect-square cursor-pointer;
   }
