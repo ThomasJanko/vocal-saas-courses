@@ -1,6 +1,6 @@
 'use server';
 
-import {auth} from "@clerk/nextjs/server";
+import { auth } from "@clerk/nextjs/server";
 import { revalidatePath } from "next/cache";
 import { createSupabaseClient } from "../supabase";
 
@@ -37,14 +37,14 @@ export const getAllCompanions = async ({ limit = 10, page = 1, subject, topic }:
     //check bookmarked companions
     const { userId } = await auth();
     const bookmarkedCompanions = userId ? await getBookmarkedCompanions(userId) : [];
-    const bookmarkedIds = bookmarkedCompanions.map((companion: any) => companion.id);
+    const bookmarkedIds = bookmarkedCompanions.map((companion: Companion) => companion.id);
 
     const { data: companions, error } = await query;
 
     if(error) throw new Error(error.message);
 
     //add bookmarked field to companions
-    const companionsWithBookmarked = companions.map((companion: any) => ({
+    const companionsWithBookmarked = companions.map((companion: Companion) => ({
         ...companion,
         bookmarked: bookmarkedIds.includes(companion.id)
     }));
