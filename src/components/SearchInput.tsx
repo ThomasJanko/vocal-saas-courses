@@ -15,6 +15,7 @@ const SearchInput = () => {
     useEffect(() => {
 
         setTimeout(() => {
+            console.log(query)
             if(searchQuery) {
                 const newUrl = formUrlQuery({
                     params: searchParams.toString(),
