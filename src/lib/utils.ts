@@ -1,4 +1,4 @@
-import { getVoices, languagesColors, subjectsColors, voices } from "@/constants";
+import { getVoices, languagesColors, subjectsColors } from "@/constants";
 import { CreateAssistantDTO } from "@vapi-ai/web/dist/api";
 import { clsx, type ClassValue } from "clsx"
 import { twMerge } from "tailwind-merge"
