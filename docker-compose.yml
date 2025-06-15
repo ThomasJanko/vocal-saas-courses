@@ -1,5 +1,3 @@
-//docker-compose.yml
-
 services:
   app:
     build:
@@ -9,7 +7,7 @@ services:
     ports:
       - "8086:3000"
     volumes:
-      - .env:/app/.env
+      - .env.local:/app/.env.local
     restart: always
       
       
