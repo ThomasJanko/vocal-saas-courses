@@ -1,4 +1,4 @@
-import { languagesColors, subjectsColors, voices } from "@/constants";
+import { getVoices, languagesColors, subjectsColors, voices } from "@/constants";
 import { CreateAssistantDTO } from "@vapi-ai/web/dist/api";
 import { clsx, type ClassValue } from "clsx"
 import { twMerge } from "tailwind-merge"
@@ -17,23 +17,30 @@ export const getLanguageColor = (language: string) => {
 };
 
 export const configureAssistant = (voice: string, style: string, language: string) => {
-  const voiceId = voices[voice as keyof typeof voices][
-          style as keyof (typeof voices)[keyof typeof voices]
-          ] || "sarah";
+  // const voiceId = voices[voice as keyof typeof voices][
+  //         style as keyof (typeof voices)[keyof typeof voices]
+  //         ] || "sarah";
+  const voiceId = getVoices(language, voice, style);
+  console.log("voiceId", voiceId);
 
   let firstMessage = "";
+  let languageCode = "";
   switch (language) {
     case "fr":
       firstMessage = "Bonjour, commençons la session. Aujourd'hui, nous allons parler de '{{topic}}'.";
+      languageCode = "French";
       break;
     case "es":
       firstMessage = "Hola, comencemos la sesión. Hoy hablaremos de '{{topic}}'.";
+      languageCode = "Spanish";
       break;
     case "de":
       firstMessage = "Hallo, lassen Sie uns beginnen. Heute werden wir über '{{topic}}' sprechen.";
+      languageCode = "German";
       break;
     default:
       firstMessage = "Hello, let's start the session. Today we'll be talking about '{{topic}}'.";
+      languageCode = "English";
   }
 
   const vapiAssistant: CreateAssistantDTO = {
@@ -70,6 +77,7 @@ export const configureAssistant = (voice: string, style: string, language: strin
                     Keep your style of conversation {{ style }}.
                     Keep your responses short, like in a real voice conversation.
                     Do not include any special characters in your responses - this is a voice conversation.
+                    You must speak in ${languageCode} language.
               `,
         },
       ],

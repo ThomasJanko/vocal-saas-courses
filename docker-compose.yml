@@ -1,0 +1,15 @@
+//docker-compose.yml
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: vocal_sass_courses
+    ports:
+      - "8086:3000"
+    volumes:
+      - .env:/app/.env
+      
+      
+

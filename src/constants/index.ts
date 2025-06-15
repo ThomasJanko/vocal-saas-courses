@@ -23,6 +23,29 @@ export const languagesColors = {
   de: "linear-gradient(135deg, #000000 33%, #DD0000 33%, #DD0000 66%, #FFCC00 66%)",
 };
 
+export const getVoices = (language: string, voice: string, style: string) => {
+  const voiceMap = {
+    en: {
+      male: { casual: "2BJW5coyhAzSr8STdHbE", formal: "c6SfcYrb2t09NHXiT80T" },
+      female: { casual: "x10MLxaAmShMYt7vs7pl", formal: "sarah" }
+    },
+    fr: {
+      male: { casual: "dY1Qa8xkWbp1fM5ny2Lo", formal: "5Qfm4RqcAer0xoyWtoHC" },
+      female: { casual: "DguSKGFJeOJdyMI6NrYY", formal: "x10MLxaAmShMYt7vs7pl" }
+    },
+    es: {
+      male: { casual: "ErXwobaYiN019PkySvjV", formal: "ErXwobaYiN019PkySvjV" },
+      female: { casual: "EXAVITQu4vr4xnSDxMaL", formal: "EXAVITQu4vr4xnSDxMaL" }
+    },
+    de: {
+      male: { casual: "VR6AewLTigWG4xSOukaG", formal: "VR6AewLTigWG4xSOukaG" },
+      female: { casual: "MF3mGyEYCl7XYWbV9V6O", formal: "MF3mGyEYCl7XYWbV9V6O" }
+    }
+  };
+
+  return voiceMap[language as keyof typeof voiceMap]?.[voice as keyof (typeof voiceMap)[keyof typeof voiceMap]]?.[style as keyof (typeof voiceMap)[keyof typeof voiceMap][keyof (typeof voiceMap)[keyof typeof voiceMap]]] || "sarah";
+}
+
 export const voices = {
   male: { casual: "2BJW5coyhAzSr8STdHbE", formal: "c6SfcYrb2t09NHXiT80T" },
   female: { casual: "x10MLxaAmShMYt7vs7pl", formal: "sarah" },
