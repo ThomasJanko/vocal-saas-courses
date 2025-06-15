@@ -10,6 +10,7 @@ services:
       - "8086:3000"
     volumes:
       - .env:/app/.env
+    restart: always
       
       
 
