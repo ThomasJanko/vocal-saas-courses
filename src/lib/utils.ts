@@ -26,9 +26,9 @@ export const configureAssistant = (voice: string, style: string, language: strin
   let firstMessage = "";
   let languageCode = "";
   switch (language) {
-    case "fr":
-      firstMessage = "Bonjour, commençons la session. Aujourd'hui, nous allons parler de '{{topic}}'.";
-      languageCode = "French";
+    case "en":
+      firstMessage = "Hello, let's start the session. Today we'll be talking about '{{topic}}'.";
+      languageCode = "English";
       break;
     case "es":
       firstMessage = "Hola, comencemos la sesión. Hoy hablaremos de '{{topic}}'.";
@@ -39,8 +39,8 @@ export const configureAssistant = (voice: string, style: string, language: strin
       languageCode = "German";
       break;
     default:
-      firstMessage = "Hello, let's start the session. Today we'll be talking about '{{topic}}'.";
-      languageCode = "English";
+      firstMessage = "Bonjour, commençons la session. Aujourd'hui, nous allons parler de '{{topic}}'.";
+      languageCode = "French";
   }
 
   const vapiAssistant: CreateAssistantDTO = {

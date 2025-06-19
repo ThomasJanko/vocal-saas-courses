@@ -45,7 +45,7 @@ const CompanionForm = () => {
             voice: '',
             style: '',
             duration: 15,
-            language: 'en',
+            language: 'fr',
         },
     })
 
@@ -179,11 +179,11 @@ const CompanionForm = () => {
                                         />
                                     </SelectTrigger>
                                     <SelectContent>
-                                        <SelectItem value="en">
-                                            English
-                                        </SelectItem>
                                         <SelectItem value="fr">
                                             French
+                                        </SelectItem>
+                                        <SelectItem value="en">
+                                            English
                                         </SelectItem>
                                         <SelectItem value="es">
                                             Spanish

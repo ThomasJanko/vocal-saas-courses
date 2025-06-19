@@ -30,8 +30,8 @@ export const getVoices = (language: string, voice: string, style: string) => {
       female: { casual: "x10MLxaAmShMYt7vs7pl", formal: "sarah" }
     },
     fr: {
-      male: { casual: "dY1Qa8xkWbp1fM5ny2Lo", formal: "5Qfm4RqcAer0xoyWtoHC" },
-      female: { casual: "DguSKGFJeOJdyMI6NrYY", formal: "x10MLxaAmShMYt7vs7pl" }
+      male: { casual: "VR6AewLTigWG4xSOukaG", formal: "VR6AewLTigWG4xSOukaG" },
+      female: { casual: "EXAVITQu4vr4xnSDxMaL", formal: "EXAVITQu4vr4xnSDxMaL" }
     },
     es: {
       male: { casual: "ErXwobaYiN019PkySvjV", formal: "ErXwobaYiN019PkySvjV" },
